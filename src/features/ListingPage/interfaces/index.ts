@@ -4,6 +4,7 @@ export type TracksResponse = {
 };
 
 export type Track = {
+  preview: string;
   album: { cover_small: string };
   artist: { name: string };
   id: number;

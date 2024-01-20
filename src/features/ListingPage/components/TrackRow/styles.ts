@@ -1,5 +1,6 @@
-import { MdFavoriteBorder, MdOpenInNew } from "react-icons/md";
 import styled from "styled-components";
+
+export const IconSize = { height: "25px", width: "25px" };
 
 export const IndexText = styled.span`
   width: 15px;
@@ -62,17 +63,8 @@ export const IconButton = styled.button`
   border: none;
   color: grey;
   transition: 0.3s;
+  cursor: pointer;
   &:hover {
     color: white;
   }
-`;
-
-export const FavoriteIcon = styled(MdFavoriteBorder)`
-  height: 25px;
-  width: 25px;
-`;
-
-export const OpenInNewTabIcon = styled(MdOpenInNew)`
-  height: 25px;
-  width: 25px;
 `;
