@@ -7,7 +7,7 @@ import dynamic from "next/dynamic";
 import { GetServerSidePropsContext } from "next/types";
 
 interface Props {
-  tracks: TracksResponse;
+  tracks?: TracksResponse;
 }
 
 const ListingPage = dynamic<ListingPageProps>(
@@ -15,7 +15,12 @@ const ListingPage = dynamic<ListingPageProps>(
 );
 
 export default function Home({ tracks }: Props) {
-  return <ListingPage tracks={tracks} />;
+  return (
+    <>
+      <h1>Home</h1>
+      <ListingPage tracks={tracks} />
+    </>
+  );
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {

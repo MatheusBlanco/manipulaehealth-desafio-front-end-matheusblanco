@@ -2,7 +2,7 @@ import { TrackRowProps } from "@/components/TrackRow/interfaces";
 import { ListContainer } from "@/styles";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { Track, TracksResponse } from "./interfaces";
+import { ListingPageProps, Track } from "./interfaces";
 
 const TrackRow = dynamic<TrackRowProps>(async () => {
   const trackRow = await import("@/components/TrackRow");
@@ -14,11 +14,7 @@ const SearchBar = dynamic(async () => {
   return searchBar.SearchBar;
 });
 
-interface Props {
-  tracks: TracksResponse;
-}
-
-export default function ListingPage({ tracks }: Props) {
+export default function ListingPage({ tracks }: ListingPageProps) {
   return (
     <ListContainer>
       <Link href={"favorites"}>favoritos</Link>
