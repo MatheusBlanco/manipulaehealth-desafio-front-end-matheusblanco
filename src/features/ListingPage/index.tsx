@@ -1,8 +1,18 @@
+import { TrackRowProps } from "@/components/TrackRow/interfaces";
 import { ListContainer } from "@/styles";
+import dynamic from "next/dynamic";
 import Link from "next/link";
-import { TrackRow } from "../../components/TrackRow";
-import { SearchBar } from "./components/SearchBar";
 import { Track, TracksResponse } from "./interfaces";
+
+const TrackRow = dynamic<TrackRowProps>(async () => {
+  const trackRow = await import("@/components/TrackRow");
+  return trackRow.TrackRow;
+});
+
+const SearchBar = dynamic(async () => {
+  const searchBar = await import("./components/SearchBar");
+  return searchBar.SearchBar;
+});
 
 interface Props {
   tracks: TracksResponse;

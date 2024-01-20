@@ -8,7 +8,6 @@ import {
   MdOutlinePauseCircle,
   MdOutlinePlayCircle,
 } from "react-icons/md";
-import { Track } from "../../features/ListingPage/interfaces";
 import {
   AlbumImage,
   BasicInformation,
@@ -21,13 +20,9 @@ import {
   TrackText,
 } from "./styles";
 import { useTrackRow } from "./useTrackRow";
+import { TrackRowProps } from "./interfaces";
 
-interface Props {
-  track: Track;
-  index: number;
-}
-
-export const TrackRow = ({ track, index }: Props) => {
+export const TrackRow = ({ track, index }: TrackRowProps) => {
   const {
     handleAudio,
     audioRef,

@@ -12,3 +12,7 @@ export type Track = {
   duration: number;
   link: string;
 };
+
+export interface ListingPageProps {
+  tracks: TracksResponse;
+}

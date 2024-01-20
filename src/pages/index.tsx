@@ -1,11 +1,18 @@
-import ListingPage from "@/features/ListingPage";
-import { TracksResponse } from "@/features/ListingPage/interfaces";
+import {
+  ListingPageProps,
+  TracksResponse,
+} from "@/features/ListingPage/interfaces";
 import { api } from "@/services/api";
+import dynamic from "next/dynamic";
 import { GetServerSidePropsContext } from "next/types";
 
 interface Props {
   tracks: TracksResponse;
 }
+
+const ListingPage = dynamic<ListingPageProps>(
+  () => import("@/features/ListingPage")
+);
 
 export default function Home({ tracks }: Props) {
   return <ListingPage tracks={tracks} />;

@@ -1,9 +1,15 @@
-import { TrackRow } from "@/components/TrackRow";
+import { TrackRowProps } from "@/components/TrackRow/interfaces";
 import { StoreType } from "@/lib/interfaces";
 import { Header, ListContainer } from "@/styles";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { Track } from "../ListingPage/interfaces";
+
+const TrackRow = dynamic<TrackRowProps>(async () => {
+  const trackRow = await import("@/components/TrackRow");
+  return trackRow.TrackRow;
+});
 
 export const FavoritesPage = () => {
   const favoriteTracks = useSelector(
@@ -13,7 +19,7 @@ export const FavoritesPage = () => {
   return (
     <ListContainer>
       <Header>Meus favoritos</Header>
-      <Link href={"/"} passHref={true}>
+      <Link href={"/"} prefetch passHref={true}>
         home
       </Link>
       {favoriteTracks?.length ? (
