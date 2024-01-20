@@ -1,12 +1,13 @@
 import { timeFormat } from "@/utils";
 import Link from "next/link";
 import {
+  MdFavorite,
   MdFavoriteBorder,
   MdOpenInNew,
   MdOutlinePauseCircle,
   MdOutlinePlayCircle,
 } from "react-icons/md";
-import { Track } from "../../interfaces";
+import { Track } from "../../features/ListingPage/interfaces";
 import {
   AlbumImage,
   BasicInformation,
@@ -26,7 +27,16 @@ interface Props {
 }
 
 export const TrackRow = ({ track, index }: Props) => {
-  const { handleAudio, currentPlaying, audioRef } = useTrackRow(track);
+  const {
+    handleAudio,
+    audioRef,
+    currentPlaying,
+    favoriteTracks,
+    handleFavoritesList,
+    isFavorited,
+  } = useTrackRow(track);
+
+  console.log(favoriteTracks);
 
   return (
     <TrackInformation key={track.id}>
@@ -42,20 +52,19 @@ export const TrackRow = ({ track, index }: Props) => {
       <DurationAndInteractions>
         <TrackText>{timeFormat(track.duration)}</TrackText>
 
-        <IconButton
-          as="button"
-          onClick={() => {
-            handleAudio(track.preview);
-          }}
-        >
+        <IconButton as="button" onClick={() => handleAudio(track.preview)}>
           {currentPlaying === track.preview ? (
             <MdOutlinePauseCircle style={IconSize} />
           ) : (
             <MdOutlinePlayCircle style={IconSize} />
           )}
         </IconButton>
-        <IconButton as="button">
-          <MdFavoriteBorder style={IconSize} />
+        <IconButton as="button" onClick={() => handleFavoritesList()}>
+          {isFavorited ? (
+            <MdFavorite style={IconSize} />
+          ) : (
+            <MdFavoriteBorder style={IconSize} />
+          )}
         </IconButton>
         <Link href={track.link} target="_blank">
           <IconButton>

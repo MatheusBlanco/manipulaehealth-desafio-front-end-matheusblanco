@@ -1,4 +1,4 @@
-import { IconButton } from "../TrackRow/styles";
+import { IconButton } from "../../../../components/TrackRow/styles";
 import { Header, SearchBarContainer, SearchIcon, SearchInput } from "./styles";
 import { useSearchBar } from "./useSearchBar";
 

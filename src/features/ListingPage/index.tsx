@@ -1,6 +1,7 @@
+import Link from "next/link";
 import styled from "styled-components";
+import { TrackRow } from "../../components/TrackRow";
 import { SearchBar } from "./components/SearchBar";
-import { TrackRow } from "./components/TrackRow";
 import { Track, TracksResponse } from "./interfaces";
 
 interface Props {
@@ -10,6 +11,7 @@ interface Props {
 export default function ListingPage({ tracks }: Props) {
   return (
     <ListContainer>
+      <Link href={"/favorites"}></Link>
       <SearchBar />
       {tracks?.data?.map((track: Track, index: number) => {
         return <TrackRow key={track.id} track={track} index={index} />;

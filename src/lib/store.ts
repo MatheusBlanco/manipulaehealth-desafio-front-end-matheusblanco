@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import currentPlayingSlice from "./slices/currentPlayingSlice";
-import postsSlice from "./slices/postsSlice";
+import favoriteTracksSlice from "./slices/favoriteTracksSlice";
 
 export const store = configureStore({
   reducer: {
-    posts: postsSlice,
     currentPlaying: currentPlayingSlice,
+    favoriteTracks: favoriteTracksSlice,
   },
 });
