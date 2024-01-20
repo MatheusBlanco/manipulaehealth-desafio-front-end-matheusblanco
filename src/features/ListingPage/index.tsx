@@ -11,7 +11,13 @@ interface Props {
 export default function ListingPage({ tracks }: Props) {
   return (
     <ListContainer>
-      <Link href={"/favorites"}></Link>
+      <Link
+        href={{
+          pathname: "favorites",
+        }}
+      >
+        favoritos
+      </Link>
       <SearchBar />
       {tracks?.data?.map((track: Track, index: number) => {
         return <TrackRow key={track.id} track={track} index={index} />;

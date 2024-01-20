@@ -1,5 +1,4 @@
 import { useRouter } from "next/router";
-import { useEffect } from "react";
 
 export const useSearchBar = () => {
   const router = useRouter();
@@ -11,15 +10,6 @@ export const useSearchBar = () => {
       query: { search: searchValue },
     });
   };
-
-  useEffect(() => {
-    return () => {
-      router.push({
-        pathname: "/",
-        query: {},
-      });
-    };
-  }, []);
 
   return { refreshData, query };
 };

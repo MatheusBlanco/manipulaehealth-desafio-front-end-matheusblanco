@@ -1,10 +1,7 @@
 import ListingPage from "@/features/ListingPage";
 import { TracksResponse } from "@/features/ListingPage/interfaces";
 import { api } from "@/services/api";
-import { Inter } from "next/font/google";
 import { GetServerSidePropsContext } from "next/types";
-
-const inter = Inter({ subsets: ["latin"] });
 
 interface Props {
   tracks: TracksResponse;

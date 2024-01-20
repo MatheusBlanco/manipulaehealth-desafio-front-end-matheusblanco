@@ -36,8 +36,6 @@ export const TrackRow = ({ track, index }: Props) => {
     isFavorited,
   } = useTrackRow(track);
 
-  console.log(favoriteTracks);
-
   return (
     <TrackInformation key={track.id}>
       <audio ref={audioRef} />

@@ -1,5 +1,4 @@
-import { StoreType } from "@/lib/interfaces";
-import { useDispatch, useSelector } from "react-redux";
+import Link from "next/link";
 
 export const FavoritesPage = () => {
   const favoriteTracks = useSelector(
@@ -7,7 +6,11 @@ export const FavoritesPage = () => {
   );
   const dispatch = useDispatch();
 
-  console.log(favoriteTracks);
-
-  return <div>a</div>;
+  return (
+    <div>
+      <Link href={"/"} passHref={true}>
+        home
+      </Link>
+    </div>
+  );
 };
