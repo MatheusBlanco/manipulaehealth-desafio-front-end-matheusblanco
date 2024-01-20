@@ -1,11 +1,13 @@
 import { StoreType } from "@/lib/interfaces";
 import { pauseSong, playSong } from "@/lib/slices/currentPlayingSlice";
 import { addTrack, removeTrack } from "@/lib/slices/favoriteTracksSlice";
+import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Track } from "../../features/ListingPage/interfaces";
 
 export const useTrackRow = (track: Track) => {
+  const { pathname } = useRouter();
   const [isFavorited, setIsFavorited] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
   const dispatch = useDispatch();
@@ -16,12 +18,34 @@ export const useTrackRow = (track: Track) => {
     (state: StoreType) => state.favoriteTracks
   );
 
+  const trackIsFavorited = favoriteTracks.find(
+    (favorite_track) => favorite_track.id === track.id
+  );
+
   const handlePlaySound = (url: string) => {
     dispatch(playSong(url));
   };
 
   const handleStopSound = () => {
     dispatch(pauseSong());
+  };
+
+  const handleAudio = (url: string) => {
+    if (currentPlaying === url) {
+      handleStopSound();
+    } else {
+      handlePlaySound(url);
+    }
+  };
+
+  const handleFavoritesList = () => {
+    if (trackIsFavorited) {
+      dispatch(removeTrack(track.id));
+      setIsFavorited(false);
+    } else {
+      dispatch(addTrack(track));
+      setIsFavorited(true);
+    }
   };
 
   useEffect(() => {
@@ -39,38 +63,19 @@ export const useTrackRow = (track: Track) => {
     }
   }, [currentPlaying]);
 
-  const handleAudio = (url: string) => {
-    if (currentPlaying === url) {
-      handleStopSound();
-    } else {
-      handlePlaySound(url);
-    }
-  };
-
-  const handleFavoritesList = () => {
-    if (favoriteTracks.includes(track)) {
-      dispatch(removeTrack(track.id));
-      setIsFavorited(false);
-    } else {
-      dispatch(addTrack(track));
-      setIsFavorited(true);
-    }
-  };
-
   useEffect(() => {
-    if (favoriteTracks.includes(track)) {
+    if (trackIsFavorited) {
       setIsFavorited(true);
     }
     return () => {
       setIsFavorited(false);
     };
-  }, []);
+  }, [pathname]);
 
   return {
     handleAudio,
     audioRef,
     currentPlaying,
-    favoriteTracks,
     handleFavoritesList,
     isFavorited,
   };

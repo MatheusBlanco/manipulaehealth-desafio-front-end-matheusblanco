@@ -1,3 +1,4 @@
+import { ReactTooltipStyled } from "@/styles";
 import { timeFormat } from "@/utils";
 import Link from "next/link";
 import {
@@ -31,7 +32,6 @@ export const TrackRow = ({ track, index }: Props) => {
     handleAudio,
     audioRef,
     currentPlaying,
-    favoriteTracks,
     handleFavoritesList,
     isFavorited,
   } = useTrackRow(track);
@@ -39,6 +39,10 @@ export const TrackRow = ({ track, index }: Props) => {
   return (
     <TrackInformation key={track.id}>
       <audio ref={audioRef} />
+      <ReactTooltipStyled id="play-tooltip" />
+      <ReactTooltipStyled id="favorite-tooltip" />
+      <ReactTooltipStyled id="external-tooltip" />
+
       <BasicInformation>
         <IndexText>{index + 1}</IndexText>
         <AlbumImage src={track.album.cover_small} alt={track.title} />
@@ -50,21 +54,38 @@ export const TrackRow = ({ track, index }: Props) => {
       <DurationAndInteractions>
         <TrackText>{timeFormat(track.duration)}</TrackText>
 
-        <IconButton as="button" onClick={() => handleAudio(track.preview)}>
+        <IconButton
+          data-tooltip-id="play-tooltip"
+          data-tooltip-content={
+            currentPlaying === track.preview ? "Pausar prévia" : "Tocar prévia"
+          }
+          as="button"
+          onClick={() => handleAudio(track.preview)}
+        >
           {currentPlaying === track.preview ? (
             <MdOutlinePauseCircle style={IconSize} />
           ) : (
             <MdOutlinePlayCircle style={IconSize} />
           )}
         </IconButton>
-        <IconButton as="button" onClick={() => handleFavoritesList()}>
+        <IconButton
+          data-tooltip-id="favorite-tooltip"
+          data-tooltip-content={isFavorited ? "Desfavoritar" : "Favoritar"}
+          as="button"
+          onClick={() => handleFavoritesList()}
+        >
           {isFavorited ? (
             <MdFavorite style={IconSize} />
           ) : (
             <MdFavoriteBorder style={IconSize} />
           )}
         </IconButton>
-        <Link href={track.link} target="_blank">
+        <Link
+          data-tooltip-id="external-tooltip"
+          data-tooltip-content={"Ver no Deezer"}
+          href={track.link}
+          target="_blank"
+        >
           <IconButton>
             <MdOpenInNew style={IconSize} />
           </IconButton>
