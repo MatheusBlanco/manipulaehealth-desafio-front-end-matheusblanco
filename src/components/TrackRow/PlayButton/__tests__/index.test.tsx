@@ -1,8 +1,8 @@
 import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { PlayButton } from "..";
 
-describe("Favorites button", () => {
+describe("Play button", () => {
   it("renders play button playing music", () => {
     render(
       <PlayButton
@@ -31,5 +31,19 @@ describe("Favorites button", () => {
     const playButtonPaused = screen.getByTestId("#play-button_paused");
 
     expect(playButtonPaused).toBeInTheDocument();
+  });
+
+  test("Play button click", () => {
+    render(
+      <PlayButton
+        playing={false}
+        onClick={function (): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
+    );
+
+    const playButton = screen.getByTestId("#play-button_paused");
+    fireEvent.click(playButton);
   });
 });

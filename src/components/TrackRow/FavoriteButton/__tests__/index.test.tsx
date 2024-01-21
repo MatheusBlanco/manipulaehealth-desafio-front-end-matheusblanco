@@ -1,5 +1,5 @@
 import "@testing-library/jest-dom";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import { FavoriteButton } from "..";
 
 describe("Favorites button", () => {
@@ -35,5 +35,21 @@ describe("Favorites button", () => {
     );
 
     expect(favoritesButtonInactive).toBeInTheDocument();
+  });
+
+  test("Favorite button click", () => {
+    render(
+      <FavoriteButton
+        isFavorited={false}
+        onClick={function (): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
+    );
+
+    const favoritesButtonInactive = screen.getByTestId(
+      "#favorites-button_inactive"
+    );
+    fireEvent.click(favoritesButtonInactive);
   });
 });

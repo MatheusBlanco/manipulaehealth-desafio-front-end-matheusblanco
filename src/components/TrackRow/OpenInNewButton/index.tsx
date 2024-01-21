@@ -9,7 +9,7 @@ interface Props {
 
 export const OpenInNewButton = ({ link }: Props) => {
   return (
-    <>
+    <div data-testid="#open_in_new">
       <ReactTooltipStyled id="external-tooltip" />
 
       <Link
@@ -22,6 +22,6 @@ export const OpenInNewButton = ({ link }: Props) => {
           <MdOpenInNew style={IconSize} />
         </IconButton>
       </Link>
-    </>
+    </div>
   );
 };
