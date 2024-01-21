@@ -24,29 +24,31 @@ export const TrackRow = ({ track, index }: TrackRowProps) => {
   } = useTrackRow(track);
 
   return (
-    <TrackInformation key={track.id} data-testid="#track_row">
-      <audio ref={audioRef} />
+    <div data-testid="#track_row">
+      <TrackInformation key={track.id} data-testid={`#track_row_${track.id}`}>
+        <audio ref={audioRef} />
 
-      <BasicInformation>
-        <IndexText>{index + 1}</IndexText>
-        <AlbumImage src={track.album.cover_small} alt={track.title} />
-        <TrackNameAndArtist>
-          <TrackText color="white">{track.title}</TrackText>{" "}
-          <TrackText>{track.artist.name}</TrackText>
-        </TrackNameAndArtist>
-      </BasicInformation>
-      <DurationAndInteractions>
-        <TrackText>{timeFormat(track.duration)}</TrackText>
-        <PlayButton
-          playing={currentPlaying === track.preview}
-          onClick={() => handleAudio(track.preview)}
-        />
-        <FavoriteButton
-          isFavorited={isFavorited}
-          onClick={() => handleFavoritesList()}
-        />
-        <OpenInNewButton link={track.link} />
-      </DurationAndInteractions>
-    </TrackInformation>
+        <BasicInformation>
+          <IndexText>{index + 1}</IndexText>
+          <AlbumImage src={track.album.cover_small} alt={track.title} />
+          <TrackNameAndArtist>
+            <TrackText color="white">{track.title}</TrackText>{" "}
+            <TrackText>{track.artist.name}</TrackText>
+          </TrackNameAndArtist>
+        </BasicInformation>
+        <DurationAndInteractions>
+          <TrackText>{timeFormat(track.duration)}</TrackText>
+          <PlayButton
+            playing={currentPlaying === track.preview}
+            onClick={() => handleAudio(track.preview)}
+          />
+          <FavoriteButton
+            isFavorited={isFavorited}
+            onClick={() => handleFavoritesList()}
+          />
+          <OpenInNewButton link={track.link} />
+        </DurationAndInteractions>
+      </TrackInformation>
+    </div>
   );
 };

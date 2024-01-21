@@ -15,7 +15,11 @@ const ListingPage = dynamic<ListingPageProps>(
 );
 
 export default function Home({ tracks }: HomeProps) {
-  return <ListingPage data-testid="#home" tracks={tracks} />;
+  return (
+    <div data-testid="#home">
+      <ListingPage data-testid="#home" tracks={tracks} />
+    </div>
+  );
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {

@@ -20,7 +20,14 @@ export default function ListingPage({ tracks }: ListingPageProps) {
       <Link href={"favorites"}>favoritos</Link>
       <SearchBar />
       {tracks?.data?.map((track: Track, index: number) => {
-        return <TrackRow key={track.id} track={track} index={index} />;
+        return (
+          <TrackRow
+            data-testid={"track_list_" + track.id.toString()}
+            key={track.id}
+            track={track}
+            index={index}
+          />
+        );
       })}
     </ListContainer>
   );
