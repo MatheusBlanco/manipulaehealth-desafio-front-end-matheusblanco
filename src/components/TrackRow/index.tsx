@@ -1,26 +1,18 @@
-import { ReactTooltipStyled } from "@/styles";
 import { timeFormat } from "@/utils";
-import Link from "next/link";
-import {
-  MdFavorite,
-  MdFavoriteBorder,
-  MdOpenInNew,
-  MdOutlinePauseCircle,
-  MdOutlinePlayCircle,
-} from "react-icons/md";
+import { FavoriteButton } from "./FavoriteButton";
+import { OpenInNewButton } from "./OpenInNewButton";
+import { PlayButton } from "./PlayButton";
+import { TrackRowProps } from "./interfaces";
 import {
   AlbumImage,
   BasicInformation,
   DurationAndInteractions,
-  IconButton,
-  IconSize,
   IndexText,
   TrackInformation,
   TrackNameAndArtist,
   TrackText,
 } from "./styles";
 import { useTrackRow } from "./useTrackRow";
-import { TrackRowProps } from "./interfaces";
 
 export const TrackRow = ({ track, index }: TrackRowProps) => {
   const {
@@ -34,9 +26,6 @@ export const TrackRow = ({ track, index }: TrackRowProps) => {
   return (
     <TrackInformation key={track.id}>
       <audio ref={audioRef} />
-      <ReactTooltipStyled id="play-tooltip" />
-      <ReactTooltipStyled id="favorite-tooltip" />
-      <ReactTooltipStyled id="external-tooltip" />
 
       <BasicInformation>
         <IndexText>{index + 1}</IndexText>
@@ -48,43 +37,15 @@ export const TrackRow = ({ track, index }: TrackRowProps) => {
       </BasicInformation>
       <DurationAndInteractions>
         <TrackText>{timeFormat(track.duration)}</TrackText>
-
-        <IconButton
-          data-tooltip-id="play-tooltip"
-          data-tooltip-content={
-            currentPlaying === track.preview ? "Pausar prévia" : "Tocar prévia"
-          }
-          as="button"
+        <PlayButton
+          playing={currentPlaying === track.preview}
           onClick={() => handleAudio(track.preview)}
-        >
-          {currentPlaying === track.preview ? (
-            <MdOutlinePauseCircle style={IconSize} />
-          ) : (
-            <MdOutlinePlayCircle style={IconSize} />
-          )}
-        </IconButton>
-        <IconButton
-          data-tooltip-id="favorite-tooltip"
-          data-tooltip-content={isFavorited ? "Desfavoritar" : "Favoritar"}
-          as="button"
+        />
+        <FavoriteButton
+          isFavorited={isFavorited}
           onClick={() => handleFavoritesList()}
-        >
-          {isFavorited ? (
-            <MdFavorite style={IconSize} />
-          ) : (
-            <MdFavoriteBorder style={IconSize} />
-          )}
-        </IconButton>
-        <Link
-          data-tooltip-id="external-tooltip"
-          data-tooltip-content={"Ver no Deezer"}
-          href={track.link}
-          target="_blank"
-        >
-          <IconButton>
-            <MdOpenInNew style={IconSize} />
-          </IconButton>
-        </Link>
+        />
+        <OpenInNewButton link={track.link} />
       </DurationAndInteractions>
     </TrackInformation>
   );

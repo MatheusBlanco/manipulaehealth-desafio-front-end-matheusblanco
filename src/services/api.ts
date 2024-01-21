@@ -1,8 +1,10 @@
 import axios from "axios";
 
+export const BASE_URL = "https://api.deezer.com/";
+
 export const setupAPIClient = (ctx = undefined) => {
   const api = axios.create({
-    baseURL: "https://api.deezer.com/",
+    baseURL: BASE_URL,
   });
 
   return api;

@@ -14,5 +14,5 @@ export type Track = {
 };
 
 export interface ListingPageProps {
-  tracks: TracksResponse | undefined;
+  tracks: TracksResponse;
 }
