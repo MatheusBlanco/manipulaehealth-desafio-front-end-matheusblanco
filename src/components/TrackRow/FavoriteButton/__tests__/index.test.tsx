@@ -1,10 +1,27 @@
 import "@testing-library/jest-dom";
-import { render } from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import { FavoriteButton } from "..";
 
 describe("Favorites button", () => {
-  it("renders favorites button", () => {
-    const result = render(
+  it("renders favorites button active", () => {
+    render(
+      <FavoriteButton
+        isFavorited={true}
+        onClick={function (): void {
+          throw new Error("Function not implemented.");
+        }}
+      />
+    );
+
+    const favoritesButtonActive = screen.getByTestId(
+      "#favorites-button_active"
+    );
+
+    expect(favoritesButtonActive).toBeInTheDocument();
+  });
+
+  it("renders favorites button inactive", () => {
+    render(
       <FavoriteButton
         isFavorited={false}
         onClick={function (): void {
@@ -13,8 +30,10 @@ describe("Favorites button", () => {
       />
     );
 
-    const favorites_button =
-      result.container.querySelector("#favorites-button");
-    expect(favorites_button).toBeInTheDocument();
+    const favoritesButtonInactive = screen.getByTestId(
+      "#favorites-button_inactive"
+    );
+
+    expect(favoritesButtonInactive).toBeInTheDocument();
   });
 });

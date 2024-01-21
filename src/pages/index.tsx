@@ -1,22 +1,21 @@
+import dynamic from "next/dynamic";
+import { GetServerSidePropsContext } from "next/types";
 import {
   ListingPageProps,
   TracksResponse,
-} from "@/features/ListingPage/interfaces";
-import { api } from "@/services/api";
-import dynamic from "next/dynamic";
-import { GetServerSidePropsContext } from "next/types";
+} from "../features/ListingPage/interfaces";
+import { api } from "../services/api";
 
 export interface HomeProps {
   tracks: TracksResponse;
 }
 
 const ListingPage = dynamic<ListingPageProps>(
-  () => import("@/features/ListingPage")
+  () => import("../features/ListingPage")
 );
 
 export default function Home({ tracks }: HomeProps) {
-  console.log(tracks);
-  return <ListingPage tracks={tracks} />;
+  return <ListingPage data-testid="#home" tracks={tracks} />;
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {

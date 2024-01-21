@@ -9,7 +9,9 @@ interface Props {
 
 export const FavoriteButton = ({ isFavorited, onClick }: Props) => {
   return (
-    <div id="#favorites-button">
+    <div
+      data-testid={`#favorites-button_${isFavorited ? "active" : "inactive"}`}
+    >
       <ReactTooltipStyled id="favorite-tooltip" />
       <IconButton
         data-tooltip-id="favorite-tooltip"

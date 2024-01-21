@@ -1,5 +1,5 @@
-import { ReactTooltipStyled } from "@/styles";
 import { MdOutlinePauseCircle, MdOutlinePlayCircle } from "react-icons/md";
+import { ReactTooltipStyled } from "../../../styles";
 import { IconButton, IconSize } from "../styles";
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 
 export const PlayButton = ({ playing, onClick }: Props) => {
   return (
-    <>
+    <div data-testid={`#play-button_${playing ? "playing" : "paused"}`}>
       <ReactTooltipStyled id="play-tooltip" />
       <IconButton
         data-tooltip-id="play-tooltip"
@@ -23,6 +23,6 @@ export const PlayButton = ({ playing, onClick }: Props) => {
           <MdOutlinePlayCircle style={IconSize} />
         )}
       </IconButton>
-    </>
+    </div>
   );
 };
