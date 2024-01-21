@@ -24,7 +24,7 @@ export const TrackRow = ({ track, index }: TrackRowProps) => {
   } = useTrackRow(track);
 
   return (
-    <TrackInformation key={track.id}>
+    <TrackInformation key={track.id} data-testid="#track_row">
       <audio ref={audioRef} />
 
       <BasicInformation>
