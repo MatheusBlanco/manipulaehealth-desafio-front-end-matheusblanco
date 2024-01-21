@@ -1,10 +1,10 @@
-import { StoreType } from "@/lib/interfaces";
-import { pauseSong, playSong } from "@/lib/slices/currentPlayingSlice";
-import { addTrack, removeTrack } from "@/lib/slices/favoriteTracksSlice";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Track } from "../../features/ListingPage/interfaces";
+import { StoreType } from "../../lib/interfaces";
+import { pauseSong, playSong } from "../../lib/slices/currentPlayingSlice";
+import { addTrack, removeTrack } from "../../lib/slices/favoriteTracksSlice";
 
 export const useTrackRow = (track: Track) => {
   const { pathname } = useRouter();

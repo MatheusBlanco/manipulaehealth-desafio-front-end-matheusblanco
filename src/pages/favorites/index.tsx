@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 
 const FavoritesPage = dynamic(async () => {
-  const favoritesPage = await import("@/features/FavoritesPage");
+  const favoritesPage = await import("../../features/FavoritesPage");
   return favoritesPage.FavoritesPage;
 });
 

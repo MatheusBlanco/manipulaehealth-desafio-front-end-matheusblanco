@@ -1,4 +1,4 @@
-import { Track } from "@/features/ListingPage/interfaces";
+import { Track } from "../../features/ListingPage/interfaces";
 
 export interface TrackRowProps {
   track: Track;

@@ -1,5 +1,5 @@
-import { ReactTooltipStyled } from "@/styles";
 import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
+import { ReactTooltipStyled } from "../../../styles";
 import { IconButton, IconSize } from "../styles";
 
 interface Props {
@@ -9,7 +9,7 @@ interface Props {
 
 export const FavoriteButton = ({ isFavorited, onClick }: Props) => {
   return (
-    <>
+    <div id="#favorites-button">
       <ReactTooltipStyled id="favorite-tooltip" />
       <IconButton
         data-tooltip-id="favorite-tooltip"
@@ -23,6 +23,6 @@ export const FavoriteButton = ({ isFavorited, onClick }: Props) => {
           <MdFavoriteBorder style={IconSize} />
         )}
       </IconButton>
-    </>
+    </div>
   );
 };

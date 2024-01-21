@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { MdOpenInNew } from "react-icons/md";
+import { ReactTooltipStyled } from "../../../styles";
 import { IconButton, IconSize } from "../styles";
-import { ReactTooltipStyled } from "@/styles";
 
 interface Props {
   link: string;

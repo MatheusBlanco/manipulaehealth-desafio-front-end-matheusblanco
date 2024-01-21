@@ -12,6 +12,7 @@ export const SearchBar = () => {
           <SearchIcon />
         </IconButton>
         <SearchInput
+          name="search"
           onChange={(e) => refreshData(e.target.value)}
           placeholder="Álbuns, artistas ou músicas..."
         />

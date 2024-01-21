@@ -1,11 +1,11 @@
-import { TrackRowProps } from "@/components/TrackRow/interfaces";
-import { ListContainer } from "@/styles";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { TrackRowProps } from "../../components/TrackRow/interfaces";
+import { ListContainer } from "../../styles";
 import { ListingPageProps, Track } from "./interfaces";
 
 const TrackRow = dynamic<TrackRowProps>(async () => {
-  const trackRow = await import("@/components/TrackRow");
+  const trackRow = await import("../../components/TrackRow");
   return trackRow.TrackRow;
 });
 

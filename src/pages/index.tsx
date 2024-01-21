@@ -6,21 +6,17 @@ import { api } from "@/services/api";
 import dynamic from "next/dynamic";
 import { GetServerSidePropsContext } from "next/types";
 
-interface Props {
-  tracks?: TracksResponse;
+export interface HomeProps {
+  tracks: TracksResponse;
 }
 
 const ListingPage = dynamic<ListingPageProps>(
   () => import("@/features/ListingPage")
 );
 
-export default function Home({ tracks }: Props) {
-  return (
-    <>
-      <h1>Home</h1>
-      <ListingPage tracks={tracks} />
-    </>
-  );
+export default function Home({ tracks }: HomeProps) {
+  console.log(tracks);
+  return <ListingPage tracks={tracks} />;
 }
 
 export async function getServerSideProps(context: GetServerSidePropsContext) {

@@ -1,4 +1,4 @@
-import { timeFormat } from "@/utils";
+import { timeFormat } from "../../utils";
 import { FavoriteButton } from "./FavoriteButton";
 import { OpenInNewButton } from "./OpenInNewButton";
 import { PlayButton } from "./PlayButton";

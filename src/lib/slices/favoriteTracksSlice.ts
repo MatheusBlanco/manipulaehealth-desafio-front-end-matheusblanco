@@ -1,4 +1,4 @@
-import { Track } from "@/features/ListingPage/interfaces";
+import { Track } from "../../features/ListingPage/interfaces";
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 
 const initialState: Track[] = [];
