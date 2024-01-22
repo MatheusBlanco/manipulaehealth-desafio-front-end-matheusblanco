@@ -10,7 +10,7 @@ interface Props {
 
 export const EmptyState = ({ svgIcon, title, subtitle }: Props) => {
   return (
-    <EmptyStateContainer>
+    <EmptyStateContainer data-testid="#empty-state">
       <SubHeader>{title}</SubHeader> <SubHeader>{subtitle}</SubHeader>
       <Image
         src={svgIcon}
