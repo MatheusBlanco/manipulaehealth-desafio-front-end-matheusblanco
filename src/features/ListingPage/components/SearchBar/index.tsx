@@ -13,6 +13,7 @@ export const SearchBar = () => {
         </IconButton>
         <SearchInput
           name="search"
+          autoComplete="off"
           onChange={(e) => refreshData(e.target.value)}
           placeholder="Álbuns, artistas ou músicas..."
         />

@@ -1,3 +1,4 @@
+import { FullWidthDiv } from "../../styles";
 import { timeFormat } from "../../utils";
 import { FavoriteButton } from "./FavoriteButton";
 import { OpenInNewButton } from "./OpenInNewButton";
@@ -24,7 +25,7 @@ export const TrackRow = ({ track, index }: TrackRowProps) => {
   } = useTrackRow(track);
 
   return (
-    <div data-testid="#track_row">
+    <FullWidthDiv data-testid="#track_row">
       <TrackInformation key={track.id} data-testid={`#track_row_${track.id}`}>
         <audio ref={audioRef} />
 
@@ -49,6 +50,6 @@ export const TrackRow = ({ track, index }: TrackRowProps) => {
           <OpenInNewButton link={track.link} />
         </DurationAndInteractions>
       </TrackInformation>
-    </div>
+    </FullWidthDiv>
   );
 };

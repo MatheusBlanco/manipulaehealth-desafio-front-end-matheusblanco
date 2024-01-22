@@ -5,6 +5,7 @@ import {
   TracksResponse,
 } from "../features/ListingPage/interfaces";
 import { api } from "../services/api";
+import { FullWidthDiv } from "../styles";
 
 export interface HomeProps {
   tracks: TracksResponse;
@@ -16,9 +17,9 @@ const ListingPage = dynamic<ListingPageProps>(
 
 export default function Home({ tracks }: HomeProps) {
   return (
-    <div data-testid="#home">
+    <FullWidthDiv data-testid="#home">
       <ListingPage data-testid="#home" tracks={tracks} />
-    </div>
+    </FullWidthDiv>
   );
 }
 

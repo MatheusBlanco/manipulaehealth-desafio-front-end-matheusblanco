@@ -24,7 +24,7 @@ export const TrackInformation = styled.div`
   padding: 3px 15px;
 
   &:hover {
-    transform: scale(1.02);
+    transform: scale(1.01);
 
     background-color: #80808040;
   }

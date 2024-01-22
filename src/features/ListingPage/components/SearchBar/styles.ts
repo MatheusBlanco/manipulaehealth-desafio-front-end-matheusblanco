@@ -13,6 +13,9 @@ export const SearchBarContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-left: 15px;
+  @media-query (max-width: 437px) {
+    width: 100%;
+  }
 `;
 
 export const SearchIcon = styled(MdSearch)`
@@ -31,10 +34,6 @@ export const SearchInput = styled.input`
   background-color: transparent;
   outline: none;
   font-size: 16px;
-  border: 1px solid transparent;
   border-radius: 15px;
   transition: all 0.3s ease;
-  &:focus {
-    border-color: grey;
-  }
 `;

@@ -1,5 +1,4 @@
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { TrackRowProps } from "../../components/TrackRow/interfaces";
 import { ListContainer } from "../../styles";
 import { ListingPageProps, Track } from "./interfaces";
@@ -17,7 +16,6 @@ const SearchBar = dynamic(async () => {
 export default function ListingPage({ tracks }: ListingPageProps) {
   return (
     <ListContainer>
-      <Link href={"favorites"}>favoritos</Link>
       <SearchBar />
       {tracks?.data?.map((track: Track, index: number) => {
         return (
