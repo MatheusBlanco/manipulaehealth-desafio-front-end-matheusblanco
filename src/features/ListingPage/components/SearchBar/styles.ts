@@ -1,8 +1,6 @@
 import { MdSearch } from "react-icons/md";
 import styled from "styled-components";
 
-export const Header = styled.h1``;
-
 export const SearchBarContainer = styled.div`
   position: relative;
   width: 340px;
@@ -13,7 +11,7 @@ export const SearchBarContainer = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-left: 15px;
-  @media-query (max-width: 437px) {
+  @media (max-width: 500px) {
     width: 100%;
   }
 `;

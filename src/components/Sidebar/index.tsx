@@ -1,4 +1,5 @@
 import { MdHomeFilled, MdOutlineFavorite } from "react-icons/md";
+import { useWindowSize } from "../../hooks/useWindowSize";
 import { Container, MenuItemLinks, MenuItems, SidebarMenu } from "./styles";
 
 export const SidebarData = [
@@ -16,6 +17,7 @@ export const SidebarData = [
 ];
 
 export const SideBar = () => {
+  const [width] = useWindowSize();
   return (
     <Container>
       <SidebarMenu>
@@ -26,7 +28,9 @@ export const SideBar = () => {
                 href={{ pathname: item.path, query: item?.queryParams }}
               >
                 {item.icon}
-                <span style={{ marginLeft: "16px" }}>{item.title}</span>
+                {width >= 857 && (
+                  <span style={{ marginLeft: "16px" }}>{item.title}</span>
+                )}
               </MenuItemLinks>
             </MenuItems>
           );

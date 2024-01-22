@@ -4,6 +4,9 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   width: 20%;
+  @media (max-width: 500px) {
+    width: 15%;
+  }
 `;
 
 export const MenuIconOpen = styled(Link)`
@@ -30,6 +33,9 @@ export const SidebarMenu = styled.div`
   position: fixed;
   top: 10;
   left: 0;
+  @media (max-width: 500px) {
+    width: 15%;
+  }
 `;
 
 export const MenuItems = styled.li`

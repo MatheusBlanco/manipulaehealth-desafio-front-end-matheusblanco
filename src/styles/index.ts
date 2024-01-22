@@ -5,6 +5,9 @@ export const MainFlex = styled.main`
   display: flex;
   align-items: start;
   padding: 1rem 1rem 1rem 0rem;
+  @media (max-width: 500px) {
+    padding: 0.5rem 0.5rem 0.5rem 0rem;
+  }
 `;
 
 const HeaderKeyFrame = keyframes`
@@ -30,6 +33,11 @@ export const MainContainer = styled.main`
   background: linear-gradient(270deg, #2d4687, #662524);
   animation: ${HeaderKeyFrame} 15s ease infinite;
   background-size: 200% 100%;
+
+  @media (max-width: 500px) {
+    padding: 0.75rem;
+    width: 85%;
+  }
 `;
 
 export const FullWidthDiv = styled.div`
@@ -43,9 +51,19 @@ export const ListContainer = styled.div`
   flex-direction: column;
   gap: 12px;
   align-items: start;
+  @media (max-width: 500px) {
+    min-height: 95vh;
+  }
 `;
 
-export const Header = styled.h1``;
+export const Header = styled.h1`
+  font-size: 24px;
+`;
+
+export const SubHeader = styled.h3`
+  font-size: 20px;
+  color: grey;
+`;
 
 export const ReactTooltipStyled = styled(Tooltip).attrs({
   className: "custom-tooltip",

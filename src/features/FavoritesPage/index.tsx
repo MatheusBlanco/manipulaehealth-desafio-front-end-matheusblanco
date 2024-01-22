@@ -1,5 +1,7 @@
 import dynamic from "next/dynamic";
 import { useSelector } from "react-redux";
+import svgIcon from "../../../public/No data-cuate.svg";
+import { EmptyState } from "../../components/EmptyState";
 import { TrackRowProps } from "../../components/TrackRow/interfaces";
 import { StoreType } from "../../lib/interfaces";
 import { Header, ListContainer } from "../../styles";
@@ -24,7 +26,11 @@ export const FavoritesPage = () => {
           return <TrackRow key={track.id} track={track} index={index} />;
         })
       ) : (
-        <Header>Você ainda não tem favoritos</Header>
+        <EmptyState
+          title={`Você ainda não tem favoritos.`}
+          subtitle={"Adicione músicas aos favoritos na tela de início!"}
+          svgIcon={svgIcon}
+        />
       )}
     </ListContainer>
   );

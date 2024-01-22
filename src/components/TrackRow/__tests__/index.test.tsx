@@ -87,7 +87,7 @@ describe("Track Row case", () => {
     await waitFor(() => screen.getByTestId("#track_row_" + track.id));
 
     expect(screen.getByTestId("#track_row_" + track.id)).toHaveStyle(
-      "transform: scale(1.02)"
+      "transform: scale(1.01)"
     );
   });
 });

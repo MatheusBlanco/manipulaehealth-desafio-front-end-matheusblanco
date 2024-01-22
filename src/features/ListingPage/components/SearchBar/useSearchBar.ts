@@ -2,7 +2,6 @@ import { useRouter } from "next/router";
 
 export const useSearchBar = () => {
   const router = useRouter();
-  const { query } = router;
 
   const refreshData = (searchValue: string) => {
     router.push({
@@ -11,5 +10,5 @@ export const useSearchBar = () => {
     });
   };
 
-  return { refreshData, query };
+  return { refreshData };
 };
